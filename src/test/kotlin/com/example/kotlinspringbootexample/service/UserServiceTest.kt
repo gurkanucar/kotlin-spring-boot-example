@@ -31,7 +31,7 @@ internal class UserServiceTest {
         val actual = userService.getAllUsers()
         // then
         verify(exactly = 1) { userRepository.findAll() }
-        assertThat(expected.size).isEqualTo(2)
+        assertThat(expected.size).isEqualTo(actual.size)
         assertEquals(expected, actual)
     }
 
