@@ -1,7 +1,7 @@
 package com.example.kotlinspringbootexample.controller
 
+import com.example.kotlinspringbootexample.converter.toDTO
 import com.example.kotlinspringbootexample.dto.UserDTO
-import com.example.kotlinspringbootexample.model.User.Companion.toDTO
 import com.example.kotlinspringbootexample.request.CreateUserRequest
 import com.example.kotlinspringbootexample.service.UserService
 import org.springframework.beans.factory.annotation.Autowired

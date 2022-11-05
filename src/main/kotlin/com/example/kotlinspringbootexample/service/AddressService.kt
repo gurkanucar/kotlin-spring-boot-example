@@ -1,5 +1,6 @@
 package com.example.kotlinspringbootexample.service
 
+import com.example.kotlinspringbootexample.converter.toAddress
 import com.example.kotlinspringbootexample.exception.AddressNotFoundException
 import com.example.kotlinspringbootexample.model.Address
 import com.example.kotlinspringbootexample.repository.AddressRepository
@@ -25,12 +26,12 @@ class AddressService(
 
     fun createAddress(addressRequest: CreateAddressRequest): Address {
         val user = userService.getUserByID(addressRequest.user.id)
-        return addressRepository.save(CreateAddressRequest.Mapper.toAddress(addressRequest, user))
+        return addressRepository.save(addressRequest.toAddress(user))
     }
 
     fun updateAddress(addressRequest: UpdateAddressRequest): Address {
         val existing = getById(addressRequest.id)
-        return addressRepository.save(UpdateAddressRequest.Mapper.toAddress(addressRequest, existing))
+        return addressRepository.save(addressRequest.toAddress(existing))
     }
 
     fun deleteAddress(id: Long) {

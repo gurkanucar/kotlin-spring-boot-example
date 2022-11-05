@@ -1,7 +1,7 @@
 package com.example.kotlinspringbootexample.controller
 
+import com.example.kotlinspringbootexample.converter.toDTO
 import com.example.kotlinspringbootexample.dto.AddressDTO
-import com.example.kotlinspringbootexample.model.Address.Companion.toDTO
 import com.example.kotlinspringbootexample.request.CreateAddressRequest
 import com.example.kotlinspringbootexample.request.UpdateAddressRequest
 import com.example.kotlinspringbootexample.service.AddressService

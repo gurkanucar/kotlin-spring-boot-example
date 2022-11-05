@@ -1,5 +1,6 @@
 package com.example.kotlinspringbootexample.service
 
+import com.example.kotlinspringbootexample.converter.toUser
 import com.example.kotlinspringbootexample.exception.UserNotFoundException
 import com.example.kotlinspringbootexample.model.User
 import com.example.kotlinspringbootexample.repository.UserRepository
@@ -17,7 +18,7 @@ class UserService(@Autowired private val userRepository: UserRepository) {
         .orElseThrow { UserNotFoundException("user not found!") }
 
     fun createUser(createUserRequest: CreateUserRequest): User {
-        return userRepository.save(CreateUserRequest.Mapper.toUser(createUserRequest))
+        return userRepository.save(createUserRequest.toUser())
     }
 
 }
