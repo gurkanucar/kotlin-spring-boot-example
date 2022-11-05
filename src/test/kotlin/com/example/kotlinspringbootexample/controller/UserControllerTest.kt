@@ -32,7 +32,6 @@ internal class UserControllerTest @Autowired constructor(
         val expected = listOf(
             user
         )
-
         mockMvc.post("/user") {
             contentType = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(user)
@@ -52,8 +51,9 @@ internal class UserControllerTest @Autowired constructor(
                 content {
                     RequestPredicates.contentType(MediaType.APPLICATION_JSON)
                 }
-                jsonPath("$") { hasSize<List<User>>(3) }
-                jsonPath("$.[0].id") { value(expected[0].id) }
+                jsonPath("$.length()") { value(expected.size) }
+                jsonPath("$[0].id") { value(expected[0].id) }
+                jsonPath("$[0].name") { value(expected[0].name) }
             }
     }
 
