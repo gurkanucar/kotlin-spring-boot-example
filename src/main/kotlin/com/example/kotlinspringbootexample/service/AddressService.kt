@@ -24,7 +24,8 @@ class AddressService(
     }
 
     fun createAddress(addressRequest: CreateAddressRequest): Address {
-        return addressRepository.save(CreateAddressRequest.Mapper.toAddress(addressRequest))
+        val user = userService.getUserByID(addressRequest.user.id)
+        return addressRepository.save(CreateAddressRequest.Mapper.toAddress(addressRequest, user))
     }
 
     fun updateAddress(addressRequest: UpdateAddressRequest): Address {
