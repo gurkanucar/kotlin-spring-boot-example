@@ -1,5 +1,6 @@
 package com.example.kotlinspringbootexample.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -11,6 +12,7 @@ data class User(
     val email: String,
     val name: String,
     val surname: String? = null,
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     val items: List<Address> = mutableListOf()
 )
