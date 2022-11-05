@@ -1,5 +1,6 @@
 package com.example.kotlinspringbootexample.model
 
+import com.example.kotlinspringbootexample.dto.AddressDTO
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
@@ -17,4 +18,17 @@ data class Address(
     val city: String,
     val town: String? = null,
     val detail: String
-)
+) {
+    companion object {
+        fun Address.toDTO(): AddressDTO {
+            return AddressDTO(
+                id = this.id,
+                title = this.title,
+                country = this.country,
+                city = this.city,
+                town = this.town,
+                detail = this.detail
+            )
+        }
+    }
+}

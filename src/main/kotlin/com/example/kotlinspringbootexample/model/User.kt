@@ -1,5 +1,6 @@
 package com.example.kotlinspringbootexample.model
 
+import com.example.kotlinspringbootexample.dto.UserDTO
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
@@ -15,4 +16,16 @@ data class User(
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     val items: List<Address> = mutableListOf()
-)
+) {
+    companion object {
+        fun User.toDTO(): UserDTO {
+            return UserDTO(
+                id = this.id,
+                username = "DTO: " + this.username,
+                email = this.email,
+                name = this.name,
+                surname = this.surname,
+            )
+        }
+    }
+}
