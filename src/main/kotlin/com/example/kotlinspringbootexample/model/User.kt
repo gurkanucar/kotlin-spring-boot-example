@@ -21,7 +21,7 @@ data class User(
         fun User.toDTO(): UserDTO {
             return UserDTO(
                 id = this.id,
-                username = "DTO: " + this.username,
+                username = this.username,
                 email = this.email,
                 name = this.name,
                 surname = this.surname,
