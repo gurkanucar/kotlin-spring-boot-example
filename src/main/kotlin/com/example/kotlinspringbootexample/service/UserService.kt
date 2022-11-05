@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 import java.lang.RuntimeException
 
 @Service
-class UserService(@Autowired private val userRepository: UserRepository) {
+class UserService(private val userRepository: UserRepository) {
 
     fun getAllUsers(): List<User> = userRepository.findAll()
 

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class AddressService(
-    @Autowired private val addressRepository: AddressRepository,
-    @Autowired private val userService: UserService
+    private val addressRepository: AddressRepository,
+    private val userService: UserService
 ) {
 
     fun getAllAddresses(): List<Address> = addressRepository.findAll()
