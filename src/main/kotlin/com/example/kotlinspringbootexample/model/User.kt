@@ -3,7 +3,7 @@ package com.example.kotlinspringbootexample.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "user")
+@Table(name = "`user`")
 data class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
