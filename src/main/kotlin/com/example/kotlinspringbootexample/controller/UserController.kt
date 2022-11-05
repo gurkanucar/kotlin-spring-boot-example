@@ -15,11 +15,11 @@ class UserController(@Autowired private val userService: UserService) {
 
     @GetMapping
     fun getUsers(): ResponseEntity<List<UserDTO>> =
-        ResponseEntity.ok().body(userService.getAllUsers().map { it.toDTO() })
+        ResponseEntity.ok(userService.getAllUsers().map { it.toDTO() })
 
     @GetMapping(("/{id}"))
     fun getUserByID(@PathVariable id: Long): ResponseEntity<UserDTO> =
-        ResponseEntity.ok().body(userService.getUserByID(id).toDTO())
+        ResponseEntity.ok(userService.getUserByID(id).toDTO())
 
     @PostMapping
     fun getUserByID(@RequestBody createUserRequest: CreateUserRequest): ResponseEntity<UserDTO> {
